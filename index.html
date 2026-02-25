@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reporte Ejecutivo Ultra Premium - Bodegas Martínez</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top left,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+header{
+    padding:60px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:48px;
+    letter-spacing:3px;
+    background: linear-gradient(90deg,#00f5d4,#00bbf9,#8338ec);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+header p{
+    opacity:.8;
+    margin-top:10px;
+    font-size:18px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+.section{
+    margin:60px 0;
+    padding:40px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 40px rgba(0,0,0,.6);
+    animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.section h2{
+    margin-bottom:25px;
+    font-size:28px;
+    border-left:6px solid #00f5d4;
+    padding-left:12px;
+}
+
+.kpis{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.kpi{
+    flex:1 1 22%;
+    margin:10px;
+    padding:30px;
+    border-radius:15px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05));
+    text-align:center;
+    transition:0.4s;
+}
+
+.kpi:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 15px 35px rgba(0,0,0,.7);
+}
+
+.kpi span{
+    font-size:14px;
+    opacity:.7;
+}
+
+.kpi h3{
+    font-size:32px;
+    margin-top:10px;
+    color:#00f5d4;
+}
+
+canvas{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+}
+
+.description{
+    margin-top:20px;
+    opacity:.85;
+    line-height:1.6;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    opacity:.6;
+    font-size:14px;
+}
+
+@media(max-width:900px){
+    .kpi{flex:1 1 45%;}
+}
+
+@media(max-width:600px){
+    .kpi{flex:1 1 100%;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📊 REPORTE EJECUTIVO ULTRA PREMIUM</h1>
+<p>Bodegas Martínez | Inteligencia Comercial Estratégica</p>
+</header>
+
+<div class="container">
+
+<div class="section">
+<h2>💎 Indicadores Estratégicos Clave</h2>
+<div class="kpis">
+    <div class="kpi">
+        <span>Facturación Total</span>
+        <h3 id="facturacion">$0</h3>
+    </div>
+    <div class="kpi">
+        <span>Producto Líder</span>
+        <h3>D00927</h3>
+    </div>
+    <div class="kpi">
+        <span>Mes de Máximo Rendimiento</span>
+        <h3>2023-05</h3>
+    </div>
+    <div class="kpi">
+        <span>Canal Dominante</span>
+        <h3>RESTAURANTES</h3>
+    </div>
+</div>
+<div class="description">
+La facturación total asciende a <b>$13,031,715.65</b>. El liderazgo comercial se concentra en el producto D00927.
+El canal RESTAURANTES representa el mayor aporte porcentual del ingreso global.
+</div>
+</div>
+
+<div class="section">
+<h2>🍷 Top 10 Productos por Volumen</h2>
+<canvas id="botellasChart"></canvas>
+<div class="description">
+El producto D00927 lidera el mercado con más de 565 mil unidades vendidas.
+Se observa una concentración significativa en los primeros cinco productos,
+indicando una estrategia comercial efectiva basada en portafolio líder.
+</div>
+</div>
+
+<div class="section">
+<h2>💰 Top 10 Productos por Facturación</h2>
+<canvas id="facturacionChart"></canvas>
+<div class="description">
+El producto D01844 domina en ingresos superando los $2.2 millones,
+mostrando alto posicionamiento de precio y valor percibido.
+</div>
+</div>
+
+<div class="section">
+<h2>🏪 Distribución de Ingresos por Canal</h2>
+<canvas id="canalesChart"></canvas>
+<div class="description">
+El canal RESTAURANTES concentra la mayor participación del mercado,
+seguido por BARES Y CAFETERÍAS y ALOJAMIENTOS.
+La diversificación sectorial reduce riesgo comercial.
+</div>
+</div>
+
+<div class="section">
+<h2>📈 Comparativa de Desempeño Mensual</h2>
+<canvas id="mesChart"></canvas>
+<div class="description">
+Mayo 2023 fue el mes más fuerte con $1.38M,
+mientras que Enero 2022 presentó el nivel más bajo con $752K.
+Esto refleja posible estacionalidad positiva en el segundo trimestre.
+</div>
+</div>
+
+<div class="section">
+<h2>🧠 Análisis Estratégico Avanzado</h2>
+<div class="description">
+* La correlación precio-volumen (0.047) indica una relación directa leve.<br><br>
+* El portafolio muestra concentración en productos líderes,
+lo que sugiere fortaleza de marca.<br><br>
+* La estructura de canales evidencia dominancia en restauración,
+alineada con posicionamiento premium.<br><br>
+* Se recomienda potenciar canales secundarios para diversificación estratégica.
+</div>
+</div>
+
+<footer>
+Reporte Corporativo Automatizado | Diseño Executive Intelligence | 2024
+</footer>
+
+</div>
+
+<script>
+
+// Animación contador
+function animateValue(id,start,end,duration){
+let obj=document.getElementById(id);
+let range=end-start;
+let current=start;
+let increment=end>start?1:-1;
+let stepTime=Math.abs(Math.floor(duration/range));
+let timer=setInterval(function(){
+current+=increment*10000;
+obj.innerHTML="$"+current.toLocaleString();
+if(current>=end){clearInterval(timer);}
+},1);
+}
+animateValue("facturacion",0,13031715,2000);
+
+// BOTELLAS
+new Chart(document.getElementById("botellasChart"),{
+type:"bar",
+data:{
+labels:["D00927","D01844","D00262","D01774","D00283","D02082","D01620","D00045","D00122","D00241"],
+datasets:[{
+label:"Botellas",
+data:[565408,506269,454983,371865,312707,288265,207828,203612,194606,152478],
+backgroundColor:"#00f5d4"
+}]
+},
+options:{
+animation:{duration:2000},
+plugins:{legend:{display:false}}
+}
+});
+
+// FACTURACION
+new Chart(document.getElementById("facturacionChart"),{
+type:"bar",
+data:{
+labels:["D01844","D00262","D01774","D01620","D00045","D00283","D00927","D00241","D00759","D00493"],
+datasets:[{
+label:"Facturación",
+data:[2271538,933271,761915,673768,663146,633307,603338,537296,532227,492542],
+backgroundColor:"#ffbe0b"
+}]
+},
+options:{animation:{duration:2500}}
+});
+
+// CANALES
+new Chart(document.getElementById("canalesChart"),{
+type:"doughnut",
+data:{
+labels:["Restaurantes","Bares","Alojamientos","Comercios","Otros","Ocio","Rest.Social","Sin Cat."],
+datasets:[{
+data:[5456588,2552781,2049405,1289690,778883,634141,176679,93546],
+backgroundColor:["#00f5d4","#ff006e","#8338ec","#ffbe0b","#3a86ff","#06d6a0","#ef476f","#ffd166"]
+}]
+},
+options:{animation:{animateRotate:true,duration:2500}}
+});
+
+// MESES
+new Chart(document.getElementById("mesChart"),{
+type:"bar",
+data:{
+labels:["2023-05","2022-01"],
+datasets:[{
+label:"Facturación",
+data:[1382735,752398],
+backgroundColor:["#06d6a0","#ef476f"]
+}]
+},
+options:{animation:{duration:2000}}
+});
+
+</script>
+
+</body>
+</html>
